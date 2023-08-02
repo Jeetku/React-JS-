@@ -3,33 +3,18 @@ import "./App.css";
 import PlayButton from "./components/PlayButton";
 import Video from "./components/Video";
 import videosDB from "./db/Data";
+import AddVideo from "./components/AddVideo";
 
 function App() {
   const [videos, setVideos] = useState(videosDB);
+
+  function addVideos(video) {
+    setVideos([...videos, { ...video, id: videos.length + 1 }]);
+  }
   return (
     <>
       <div className="App" onClick={() => console.log("app")}>
-        <div>
-          <button
-            type=""
-            onClick={() =>
-              setVideos([
-                ...videos,
-                {
-                  id: videos.length + 1,
-                  title: "TypScript JS Tutorial",
-                  views: "50K",
-                  time: "1.5 Year Ago",
-                  channel: "CodeBeta",
-                  verified: true,
-                },
-              ])
-            }
-          >
-            Add Videos
-          </button>
-        </div>
-        Videos
+        <AddVideo onAddVideos={addVideos}></AddVideo>
         {videos.map((video) => (
           <Video
             key={video.id}
@@ -47,18 +32,7 @@ function App() {
             ></PlayButton>
           </Video>
         ))}
-        <div style={{ clear: "both" }}>
-          {/* <PlayButton
-            message="Hi"
-            onPlay={() => console.log("Play")}
-            onPause={() => alert("Pause")}
-          >
-            Play
-          </PlayButton> */}
-          {/* <PlayButton message="Hi" >
-            Pause
-          </PlayButton> */}
-        </div>
+        <div style={{ clear: "both" }}></div>
       </div>
     </>
   );
