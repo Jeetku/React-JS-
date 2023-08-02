@@ -1,12 +1,34 @@
+import { useState } from "react";
 import "./App.css";
 import PlayButton from "./components/PlayButton";
 import Video from "./components/Video";
-import videos from "./db/Data";
+import videosDB from "./db/Data";
 
 function App() {
+  const [videos, setVideos] = useState(videosDB);
   return (
     <>
       <div className="App" onClick={() => console.log("app")}>
+        <div>
+          <button
+            type=""
+            onClick={() =>
+              setVideos([
+                ...videos,
+                {
+                  id: videos.length + 1,
+                  title: "TypScript JS Tutorial",
+                  views: "50K",
+                  time: "1.5 Year Ago",
+                  channel: "CodeBeta",
+                  verified: true,
+                },
+              ])
+            }
+          >
+            Add Videos
+          </button>
+        </div>
         Videos
         {videos.map((video) => (
           <Video
@@ -22,9 +44,7 @@ function App() {
               message="Hi"
               onPlay={() => console.log("Play", video.title)}
               onPause={() => console.log("Pause", video.title)}
-            >
-              {video.title}
-            </PlayButton>
+            ></PlayButton>
           </Video>
         ))}
         <div style={{ clear: "both" }}>
