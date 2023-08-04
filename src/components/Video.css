@@ -23,4 +23,8 @@
 }
 .close {
   position: absolute;
+  margin-left: 13rem;
+}
+.edit {
+  position: absolute;
 }

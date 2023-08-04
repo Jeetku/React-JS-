@@ -9,12 +9,16 @@ const Video = ({
   id,
   children,
   deleteVideo,
+  editVideo,
 }) => {
   return (
     <>
       <div className="container">
         <button className="close" onClick={() => deleteVideo(id)}>
           X
+        </button>
+        <button className="edit" onClick={() => editVideo(id)}>
+          Edit
         </button>
 
         <div className="pic">
