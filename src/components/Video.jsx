@@ -8,10 +8,15 @@ const Video = ({
   verified,
   id,
   children,
+  deleteVideo,
 }) => {
   return (
     <>
       <div className="container">
+        <button className="close" onClick={() => deleteVideo(id)}>
+          X
+        </button>
+
         <div className="pic">
           <img src={`https://picsum.photos/id/${id}/160/90`} alt="images" />
         </div>
